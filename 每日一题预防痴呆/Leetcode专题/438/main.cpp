@@ -1,19 +1,3 @@
-# 438. 找到字符串中所有字母异位词
-
-## 题目
-给定两个字符串 s 和 p，找到 s 中所有 p 的 异位词 的子串，返回这些子串的起始索引。不考虑答案输出的顺序。
-
-异位词 指由相同字母重排列形成的字符串（包括相同的字符串）。
-
-来源：力扣（LeetCode）[链接](https://leetcode.cn/problems/find-all-anagrams-in-a-string)
-
-## 思路
-在S中取一段与P长度一样的字符序列,统计各个字符数量是否一样。
-然后在S中移动取出的子字符序列。
-
-## 代码
-C++
-```
 class Solution {
 public:
     vector<int> findAnagrams(string s, string p) {
@@ -46,8 +30,3 @@ public:
         return ans;
     }
 };
-```
-
-## 复杂度分析
-* 时间复杂度: O(n)
-* 空间复杂度: O(1),可以近似看作常数或者更准确说是p字符长度。
