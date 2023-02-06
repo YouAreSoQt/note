@@ -87,4 +87,4 @@ MEMORY 存储引擎将表中的数据存储到内存中，为查询和引用其�
 
 ![存储引擎的选择](./images/MySQL%E5%82%A8%E5%AD%98%E5%BC%95%E6%93%8E%E5%AF%B9%E6%AF%94.png)
 
-![存储引擎的选择(各引擎的对比)](https://www.runoob.com/note/28228)
+[存储引擎的选择(各引擎的对比)](https://www.runoob.com/note/28228)
