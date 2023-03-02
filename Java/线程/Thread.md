@@ -136,14 +136,3 @@ public class Thread implements Runnable {
     }
 }
 ```
-
-```java
-public enum State {
-    NEW, // 新建 
-    RUNNABLE, // 就绪/运行
-    BLOCKED, // 阻塞
-    WAITING, // 等待
-    TIMED_WAITING, // 计时等待
-    TERMINATED; // 结束
-}
-```
