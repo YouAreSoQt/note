@@ -3,7 +3,7 @@ const greater = (left, right) => left > right;
 const equal = (left, right) => left == right;
 const add = (left, right) => left + right;
 
-function *range(start, stop, step){
+function *range(start, stop, step) {
     if (start == undefined) return;
     if (stop == undefined) {
         stop = start;
