@@ -71,6 +71,15 @@ local function list(iter)
     return t
 end
 
+local function counter(iter)
+    local t = {}
+    for v in iter do
+        local n = t[v] or 0 
+        t[v] = n + 1
+    end
+    return t
+end
+
 return {
     iterator = iterator,
     ivalues = ivalues,
@@ -81,4 +90,5 @@ return {
     filter = filter,
     enumerate = enumerate,
     list = list,
+    counter = counter,
 }
