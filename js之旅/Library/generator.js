@@ -37,11 +37,20 @@ export const sum = (generator, f = add) => {
     for (const v of generator)
         result = result == undefined ? v : f(result, v);
     return result;
-}
+};
 
 export const toArray = generator => {
     let arr = [];
     for (const v of generator)
         arr.push(v);
     return arr;
-}
+};
+
+export const counter = generator => {
+    const counter = new Map();
+    for (const v of generator) {
+        const count = counter.get(v) || 0;
+        counter.set(v, count + 1);
+    }
+    return counter;
+};
