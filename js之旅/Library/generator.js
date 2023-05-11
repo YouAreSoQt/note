@@ -3,7 +3,7 @@ const greater = (left, right) => left > right;
 const equal = (left, right) => left == right;
 const add = (left, right) => left + right;
 
-export function *range(start, stop, step) {
+export const range = function*(start, stop, step) {
     if (start == undefined) return;
     if (stop == undefined) {
         stop = start;
@@ -16,18 +16,18 @@ export function *range(start, stop, step) {
         yield start;
 };
 
-export function *enumerate(generator) {
+export const enumerate = function*(generator) {
     let i = 0;
     for (const v of generator)
         yield [i++, v];
 }
 
-export function *map(generator, f) {
+export const map = function*(generator, f) {
     for (const v of generator)
         yield f(v);
 }
 
-export function *filter(generator, f) {
+export const filter = function*(generator, f) {
     for (const v of generator)
         if (f(v)) yield v;
 }
@@ -39,12 +39,7 @@ export const sum = (generator, f = add) => {
     return result;
 };
 
-export const toArray = generator => {
-    let arr = [];
-    for (const v of generator)
-        arr.push(v);
-    return arr;
-};
+export const toArray = generator => [...generator];
 
 export const counter = generator => {
     const counter = new Map();
