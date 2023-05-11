@@ -37,6 +37,20 @@ local function entries(t)
     end, t, k)
 end
 
+local function range(start, count)
+    start = start or 1
+    count = count or 1
+
+    local function iter(_, i)
+        i = i + 1
+        if i < start + count then
+            return i, i
+        end
+    end
+
+    return iter, 0, start - 1
+end
+
 local function map(func, iter)
     return function()
         for v in iter do
@@ -86,6 +100,7 @@ return {
     keys = keys,
     values = values,
     entries = entries,
+    range = range,
     map = map,
     filter = filter,
     enumerate = enumerate,
