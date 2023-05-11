@@ -13,6 +13,14 @@ local function iterator(next, state, k)
     return setmetatable(iter, _iter_values_)
 end
 
+local function less(a, b)
+    return a < b
+end
+
+local function greater(a, b)
+    return a > b
+end
+
 local function ivalues(t)
     return iterator(ipairs(t))
 end
@@ -37,18 +45,27 @@ local function entries(t)
     end, t, k)
 end
 
-local function range(start, count)
-    start = start or 1
-    count = count or 1
-
-    local function iter(_, i)
-        i = i + 1
-        if i < start + count then
-            return i, i
-        end
+local function range(start, stop, step)
+    if not stop then 
+        stop = start or 0
+        start = 1
     end
 
-    return iter, 0, start - 1
+    if not step or step == 0 then step = 1 end
+
+    local compare = step < 0 and less or greater
+
+    local function _range()
+        local function iter(_, i)
+            if not compare(i, stop) then
+                return i + step, i
+            end
+        end
+
+        return iter, 0, start
+    end
+
+    return iterator(_range())
 end
 
 local function map(func, iter)
