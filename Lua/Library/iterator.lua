@@ -87,10 +87,35 @@ local function filter(func, iter)
 end
 
 local function enumerate(iter)
-    local i = 0
-    for v in iter do
-        i = i + 1
-        return { i, v }
+    return function()
+        local i = 0
+        for v in iter do
+            i = i + 1
+            return { i, v }
+        end
+    end
+end
+
+local function skip(count, iter)
+    return function()
+        for v in iter do
+            count = count - 1
+            if count < 0 then
+                return v
+            end
+        end
+    end
+end
+
+local function take(count, iter)
+    return function()
+        for v in iter do
+            count = count - 1
+            if count < 0 then
+                break
+            end
+            return v
+        end
     end
 end
 
@@ -121,6 +146,8 @@ return {
     map = map,
     filter = filter,
     enumerate = enumerate,
+    skip = skip,
+    take = take,
     list = list,
     counter = counter,
 }
